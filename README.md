@@ -1,8 +1,1 @@
-# tytle
-
-aio
-
-## sabti
-
-- aaaaa
-- iiiii
+# タイピングゲームを作ろう

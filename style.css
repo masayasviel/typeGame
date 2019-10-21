@@ -1,28 +1,18 @@
-* {
-  margin: 0;
+#main {
+  margin: 10px;
   padding: 0;
   border: 0;
 }
-
-body {
-  background: #ddf;
-  font: 30px sans-serif;
-}
 #frame{
-  background: #ffffff;
-  font: 30px sans-serif;
-  border:8px double navy;
-  width:400px;
-  height:300px;
-  font-size:18pt;
-  overflow:auto;
-}
-#frame:first-letter{
-  color:#5bc0de;
+  width: 500px;
+  height: 300px;
+  padding: 0.5em;
+  font-size: 24px;
+  border: 5px double #000000;
+  word-break : break-all;
 }
 #restart{
-  margin-left: 10px;
-  background: #BDBDBD;
+  margin: 10px 20px;
   border-bottom: solid 3px #888;
   border-radius: 20px;
   width: 100px;

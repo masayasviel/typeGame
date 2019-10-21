@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8" />
-<title>typingGame</title>
-<meta name="Description" content="" />
-<meta name="Keywords"  content="" />
-
-<link rel="stylesheet" type="text/css" media="screen,print" href="style.css" />
-</head>
-<body>
-<h2>タイピングゲーム</h2>
-<div id="frame"></div>
-<input type="button" class="button" id="restart" value="restart" onclick="gameSet()">
-
-<script type="text/javascript" src="index.js"></script>
-</body>
+    <head>
+        <meta charset="utf-8">
+        <title>タイピングゲーム</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+    <body>
+        <div id="main">
+            <h1>タイピングゲーム</h1>
+            <div id="frame"></div>
+            <input type="button" id="restart" value="restart" onclick="init()">
+        </div>
+        <script type="text/javascript" src="index.js"></script>
+    </body>
 </html>

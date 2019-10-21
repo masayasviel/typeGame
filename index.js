@@ -1,90 +1,31 @@
-//グローバル変数
-/*--------------------------------------------*/
-//0～25までの乱数を格納する配列
-var rand = new Array();
-//問題の文字列を格納
-var mondai = "";
-//何問目か格納
-var count = 0;
-//問題数
-var queNum = 150;
-/*--------------------------------------------*/
+"use strict"
+const numberOfQuestions = 10;
+const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+let str = "";
+let isNum = 0;
 
-//キーボード関係
-/*----------------------------------------------------------------------*/
-//キー状態管理変数の定義
-var KEYS = new Array(256);
-//キーの状態を false （押されていない）で初期化
-for(var i=0; i<KEYS.length; i++) {
-    KEYS[i] = false;
-}
-//キーが押された時に呼び出される処理を指定
-window.onkeydown = function(e) {
-    //キーボードによる自動スクロールの防止
-    e.preventDefault();
-    //キーを押された状態に更新
-    KEYS[e.keyCode] = true;
-    typeGame();
-    
-};
-//キーが離された時に呼び出される処理を指定
-window.onkeyup = function(e) {
-    //キーを離された状態に更新
-    KEYS[e.keyCode] = false;
-};
-//キーコードを格納する配列
-var kCode = new Array(65,66,67,68,69,70,71,72,73,
-                        74,75,76,77,78,79,80,81,82,
-                        83,84,85,86,87,88,89,90);
-//文字を格納する配列
-var Alphabet = new Array("Ａ","Ｂ","Ｃ","Ｄ","Ｅ","Ｆ","Ｇ","Ｈ","Ｉ",
-                         "Ｊ","Ｋ","Ｌ","Ｍ","Ｎ","Ｏ","Ｐ","Ｑ","Ｒ",
-                         "Ｓ","Ｔ","Ｕ","Ｖ","Ｗ","Ｘ","Ｙ","Ｚ");
-/*----------------------------------------------------------------------*/
-
-//関数
-/*----------------------------------------------------------------------*/
-//0～25までの乱数を queNum 個作成して配列randに格納する関数
-function randAlpha(){
-  for (var i = 0;i < queNum ;i++){
-    rand[i] = Math.floor( Math.random() * 26 );
-  }
+window.onkeydown = e=>{
+  e.preventDefault();
+  main(e.key.toUpperCase());
 }
 
-//タイピングゲームの問題をセットする関数
-function gameSet(){
-  //問題文とカウント数をクリアする
-  mondai = "";
-  count = 0;
-  randAlpha();
-    
-  //問題文の作成
-  for ( var i = 0 ; i < queNum ; i++){
-    mondai =  mondai + Alphabet[rand[i]];
-  }
-  
-  //問題枠に表示する
-  document.getElementById("frame").innerHTML = mondai;
+function init(){
+  str = "";
+  isNum = 0;
+  for(let i = 0;i < numberOfQuestions;i++) str += alphabet[Math.round(Math.random()*25)];
+  document.getElementById("frame").textContent = str;
 }
 
-//キー入力を受け取る関数
-function typeGame(){
-    //入力されたキーコードと、問題文のキーコードを比較
-    if(KEYS[kCode[rand[count]]]){
-        //カウント数を＋１にする
-        count++;
-    
-        //全文字入力したか確認
-        if (count < queNum){
-            //問題文の頭の一文字を切り取る
-            mondai = mondai.substring(1,mondai.Length);
-            //問題枠に表示する
-            document.getElementById("frame").innerHTML = mondai;
-        }else{
-            //問題枠にゲーム終了を表示
-            document.getElementById("frame").innerHTML = "終了します";
-        }
+function main(inputKey){
+  if(str.charAt(0)===inputKey){
+    isNum++;
+    if(isNum < numberOfQuestions){
+      str = str.slice(1, str.length);
+      document.getElementById("frame").textContent = str;
+    }else{
+      document.getElementById("frame").textContent = "終了します";
     }
+  }
 }
-/*----------------------------------------------------------------------*/
-gameSet();
+
+init();
