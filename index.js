@@ -18,9 +18,9 @@ const main = inputKey=>{
         count++;
         if(count < numberOfQuestions){
             str = str.slice(1, str.length);
-            document.getElementById("frame").textContent = str;
+            frame.textContent = str;
         }else{
-            document.getElementById("frame").textContent = "終了します\nリセットボタンを押してください";
+            frame.textContent = "終了します\nリセットボタンを押してください";
         }
     }
 }
